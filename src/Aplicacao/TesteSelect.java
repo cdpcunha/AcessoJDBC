@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import java.sql.Statement;
+//import java.sql.Statement;
 
 import db.DB;
 
@@ -13,13 +13,12 @@ public class TesteSelect {
 	public static void main(String[] args)  {
 	
 		Connection conn = null;
-		Statement st = null;
+		//Statement st = null;
 		ResultSet rs = null;
 		
 		try {
 			conn = DB.getConnection();
-			st = conn.createStatement();
-			rs = st.executeQuery("SELECT * FROM DEPARTMENT");
+			rs = conn.createStatement().executeQuery("SELECT * FROM DEPARTMENT");
 			
 			while(rs.next()) {
 				System.out.println(rs.getInt("Id")+" - "+rs.getString("Name"));
@@ -30,10 +29,10 @@ public class TesteSelect {
 		}
 		finally {
 			DB.closeResultSet(rs);
-			DB.closeStatement(st);
+			//DB.closeStatement(st);
 			DB.closeConnection();
 		}
-			
+	
 		}
 	}
 
